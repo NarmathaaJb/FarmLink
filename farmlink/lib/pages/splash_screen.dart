@@ -8,6 +8,11 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.light(
+          primary: Color.fromARGB(245, 53, 94, 59), // Set primary color to green
+        ),
+      ),
       home: FarmLinkScreen(),
       debugShowCheckedModeBanner: false,
     );
@@ -18,30 +23,32 @@ class FarmLinkScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF4C8056), // The green background color
+      backgroundColor: Theme.of(context).colorScheme.primary, // Use primary color as background
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/farmlink_logo.png', // Replace with your logo asset
-                    height: 100,
-                    width: 100,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'FARMLINK',
-                    style: TextStyle(
-                      fontSize: 36,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+              padding: const EdgeInsets.only(top: 10),
+              child: Center(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/farmlink_logo.png', // Replace with your logo asset
+                      height: 400,
+                      width: 400,
                     ),
-                  ),
-                ],
+                    
+                    Text(
+                      'FARMLINK',
+                      style: TextStyle(
+                        fontSize: 36,
+                        color: Colors.white, // Text color white
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -60,7 +67,7 @@ class FarmLinkScreen extends StatelessWidget {
                 child: Text(
                   "Let's Connect",
                   style: TextStyle(
-                    color: Color(0xFF4C8056), // Green text color
+                    color: Theme.of(context).colorScheme.primary, // Use primary color for text
                     fontSize: 18,
                   ),
                 ),

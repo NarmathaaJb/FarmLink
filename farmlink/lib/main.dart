@@ -1,6 +1,4 @@
-import 'package:farmlink/pages/farmers_profile.dart';
-import 'package:farmlink/pages/login_page.dart';
-import 'package:farmlink/pages/user_page.dart';
+import 'package:farmlink/pages/announcements.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,15 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'FarmLink',
       theme: ThemeData(
-        colorScheme: ColorScheme.light(primary: Color(0xFFBAB86C)),
+        colorScheme: ColorScheme.light(primary: Colors.green),
         useMaterial3: true,
       ),
-      initialRoute: '/user', // Set initial route to UserPage
-      routes: {
-        '/user': (context) => UserPage(),
-        '/login': (context) => LoginPage(),
-        '/profile': (context) => FarmersProfile(),
-      },
+      home:  Announcements(),  // Use the LoginPage as the home screen
     );
   }
 }
