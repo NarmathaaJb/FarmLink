@@ -1,3 +1,4 @@
+import 'package:farmlink/pages/user_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -55,7 +56,7 @@ class FarmLinkScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 50.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Define the action for the button
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>UserPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white, // Button background color

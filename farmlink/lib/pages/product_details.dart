@@ -35,7 +35,7 @@ class ProductDetailsScreen extends StatelessWidget {
           children: [
             Center(
               child: Image.asset(
-                'assets/images/basmati_rice.jpg',
+                'assets/images/Basmathi_rice_var.jpg',
                 width: 150,
                 height: 150,
                 fit: BoxFit.cover,
