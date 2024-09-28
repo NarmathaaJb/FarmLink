@@ -1,4 +1,6 @@
 import 'package:farmlink/pages/announcements.dart';
+import 'package:farmlink/pages/farmers_page.dart';
+import 'package:farmlink/pages/rice.dart';
 import 'package:flutter/material.dart';
 void main() {
   runApp(RetailersDashboard());
@@ -117,7 +119,7 @@ class FarmersPage extends StatelessWidget {
             ),
           ),
           // Farmers list
-          ListView.builder(
+            ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: farmers.length, // Number of farmers
@@ -129,7 +131,17 @@ class FarmersPage extends StatelessWidget {
                 ),
                 title: Text(farmer['name']),
                 subtitle: Text('Crops: ${farmer['crops']}'),
-                trailing: Icon(Icons.arrow_forward),
+                trailing: IconButton(
+                  icon: Icon(Icons.arrow_forward),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(),
+                      ),
+                    );
+                  },
+                ),
               );
             },
           ),
@@ -219,6 +231,7 @@ class FarmersPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
+                
               ),
             ),
           ),
@@ -229,6 +242,16 @@ class FarmersPage extends StatelessWidget {
               children: grains.map((grain) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: GestureDetector( // Wrap the image with GestureDetector
+          onTap: () {
+            // Navigate to the Rice page when the rice image is tapped
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Rice(), // Change this to Rice() to navigate
+              ),
+            );
+          },
                   child: Column(
                     children: [
                       Container(
@@ -246,7 +269,9 @@ class FarmersPage extends StatelessWidget {
                       Text(grain['name']),
                     ],
                   ),
+                  )
                 );
+                
               }).toList(),
             ),
           ),

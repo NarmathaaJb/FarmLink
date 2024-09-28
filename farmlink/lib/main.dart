@@ -1,6 +1,10 @@
+import 'package:farmlink/pages/add_product.dart';
+import 'package:farmlink/pages/announcements.dart';
 import 'package:farmlink/pages/farmers_profile.dart';
 import 'package:farmlink/pages/login_page.dart';
+import 'package:farmlink/pages/product_details.dart';
 import 'package:farmlink/pages/retailers_dashboard.dart';
+import 'package:farmlink/pages/rice.dart';
 import 'package:farmlink/pages/splash_screen.dart';
 import 'package:farmlink/pages/user_page.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +27,15 @@ class MyApp extends StatelessWidget {
       initialRoute: '/splash', // Set initial route to UserPage
       routes: {
         '/splash' : (context) => SplashScreen(),
-        '/user': (context) => UserPage(),
         '/login': (context) => LoginPage(),
+        '/user': (context) => UserPage(),
+        '/retailer' : (context) => RetailersDashboard(),
         '/profile': (context) => FarmersProfile(),
+        '/announcements' : (context) => Announcements(),
+        '/rice' : (context) => Rice(),
+        '/details' : (context) => ProductDetailsScreen(),
+        '/farmer' : (context) => FarmersPage(),
+        '/add' : (context) => AddProduct(),
       },  // Use the LoginPage as the home screen
     );
   }

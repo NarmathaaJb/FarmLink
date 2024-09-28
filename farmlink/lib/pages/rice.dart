@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'product_details.dart'; // Make sure this is the correct path
+
 void main() {
   runApp(Rice());
 }
@@ -56,7 +58,10 @@ class RiceProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context), // Proper back navigation
+        ),
         title: Text('Rice'),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -66,13 +71,13 @@ class RiceProductPage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         itemCount: riceProducts.length,
         itemBuilder: (context, index) {
-          return riceProductCard(riceProducts[index]);
+          return riceProductCard(riceProducts[index], context);
         },
       ),
     );
   }
 
-  Widget riceProductCard(Map<String, String> product) {
+  Widget riceProductCard(Map<String, String> product, BuildContext context) {
     return Card(
       margin: EdgeInsets.symmetric(vertical: 8.0),
       shape: RoundedRectangleBorder(
@@ -122,7 +127,10 @@ class RiceProductPage extends StatelessWidget {
                   SizedBox(height: 8),
                   ElevatedButton.icon(
                     onPressed: () {
-                      // Handle Buy button action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProductDetailsScreen()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,

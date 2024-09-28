@@ -1,6 +1,7 @@
+// Import the farmer page
+import 'package:farmlink/pages/farmers_profile.dart';
+import 'package:farmlink/pages/retailers_dashboard.dart';
 import 'package:flutter/material.dart';
-
-import 'login_page.dart'; // Import your login page
 
 void main() {
   runApp(UserPage());
@@ -12,7 +13,7 @@ class UserPage extends StatelessWidget {
     return MaterialApp(
       title: 'User',
       theme: ThemeData(
-        fontFamily: 'Plus Jakarta Sans', // Or use another modern font like Poppins or Roboto
+        fontFamily: 'Plus Jakarta Sans',
       ),
       home: Scaffold(
         body: Container(
@@ -22,8 +23,9 @@ class UserPage extends StatelessWidget {
             children: [
               Expanded(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    // Centered FarmLink title
+                    SizedBox(height: 50),
                     Container(
                       padding: const EdgeInsets.all(16),
                       color: const Color(0xFFFFFFFF),
@@ -70,24 +72,42 @@ class UserPage extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              buildLoginCard(
-                                imageUrl: 'assets/images/farmer_user.png',
-                                label: 'Farmer Login',
+                              GestureDetector(
+                                onTap: () {
+                                  // Navigate to FarmerPage when farmer avatar is clicked
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                                  );
+                                },
+                                child: buildLoginCard(
+                                  imageUrl: 'assets/images/farmer_user.png',
+                                  label: 'Farmer Login',
+                                ),
                               ),
                               SizedBox(height: 10),
-                              buildSignInButton('Sign in', context), // Pass context
+                              buildSignInButton('Sign in', context, ProfilePage()), // Navigate to FarmersPage
                             ],
                           ),
                           // Retailer login card with sign-in button
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              buildLoginCard(
-                                imageUrl: 'assets/images/retailer_user.png',
-                                label: 'Retailer Login',
+                              GestureDetector(
+                                onTap: () {
+                                  // Navigate to RetailersDashboard when retailer avatar is clicked
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => RetailersDashboard()),
+                                  );
+                                },
+                                child: buildLoginCard(
+                                  imageUrl: 'assets/images/retailer_user.png',
+                                  label: 'Retailer Login',
+                                ),
                               ),
                               SizedBox(height: 10),
-                              buildSignInButton('Sign in', context), // Pass context
+                              buildSignInButton('Sign in', context, RetailersDashboard()), // Navigate to RetailersDashboard
                             ],
                           ),
                         ],
@@ -109,16 +129,16 @@ class UserPage extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 218,
+                height: 150, // Adjusted to make room for the grass image
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/background_image.png'),
+                    image: AssetImage('assets/images/grass_pic.jpg'), // Grass image here
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              SizedBox(height: 5),
+               // Optional, can increase or decrease
             ],
           ),
         ),
@@ -154,13 +174,13 @@ class UserPage extends StatelessWidget {
     );
   }
 
-  Widget buildSignInButton(String text, BuildContext context) {
+  Widget buildSignInButton(String text, BuildContext context, Widget page) {
     return ElevatedButton(
       onPressed: () {
-        // Navigate to LoginPage
+        // Navigate to the respective page based on the user role
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => page),
         );
       },
       style: ElevatedButton.styleFrom(

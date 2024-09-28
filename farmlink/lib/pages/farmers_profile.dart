@@ -1,6 +1,8 @@
 import 'package:farmlink/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
+import 'add_product.dart';  // Import AddProductScreen
+
 void main() {
   runApp(FarmersProfile());
 }
@@ -26,9 +28,9 @@ class ProfilePage extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
           },
         ),
       ),
@@ -108,7 +110,13 @@ class ProfilePage extends StatelessWidget {
             _buildProductTile('Organic Carrots', '50 Kg', 'Rs.55/Kg', 'assets/images/carrot.jpg'),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // Navigate to AddProductScreen when "Add Product" is pressed
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddProductScreen()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green, // Background color
                 shape: RoundedRectangleBorder(
