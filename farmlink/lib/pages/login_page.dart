@@ -1,7 +1,6 @@
 import 'package:farmlink/pages/user_page.dart';
 import 'package:flutter/material.dart';
 
-import 'farmers_profile.dart'; // Make sure to import the FarmersProfile page
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
