@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:farmlink/pages/user_page.dart';
+import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const SizedBox(height: 50), // Extra spacing at the top
+                const SizedBox(height: 50), // For extra spacing at the top
                 const Text(
                   'FarmLink',
                   textAlign: TextAlign.center,
@@ -28,7 +29,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Log in to Your Account',
+                  'Create Your Account',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
@@ -37,6 +38,18 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 40),
+                const TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                    filled: true,
+                    fillColor: Color(0xFFF0F0F0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
                 const TextField(
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -62,10 +75,19 @@ class LoginPage extends StatelessWidget {
                     suffixIcon: Icon(Icons.visibility),
                   ),
                 ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Checkbox(value: false, onChanged: (bool? value) {}),
+                    const Expanded(
+                      child: Text('I agree to the terms and conditions'),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to the UserPage on successful login
+                    // Navigate to the FarmersProfile page
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => UserPage()),
@@ -79,20 +101,20 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'Log in',
+                    'Sign up',
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 10),
                 const Center(
                   child: Text(
-                    "Don't have an account? Sign up.",
+                    'Already have an account? Log in.',
                     style: TextStyle(color: Colors.black54),
                   ),
                 ),
                 const SizedBox(height: 30),
                 const Center(
-                  child: Text('Or log in with', style: TextStyle(color: Colors.black54)),
+                  child: Text('Or sign up with', style: TextStyle(color: Colors.black54)),
                 ),
                 const SizedBox(height: 16),
                 Row(

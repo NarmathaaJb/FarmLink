@@ -1,4 +1,4 @@
-import 'package:farmlink/pages/login_page.dart';
+import 'package:farmlink/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 import 'add_product.dart';  // Import AddProductScreen
@@ -29,7 +29,7 @@ class ProfilePage extends StatelessWidget {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => LoginPage()),
+              MaterialPageRoute(builder: (context) => const RegisterPage()),
             );
           },
         ),
